@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><uc-export clientvers="8.0.0">
+<VARA OVD_VRName="FREI" client="6000" data_type="SQLI_SEC" name="PCK.AUTOMIC_SHARED.PRV.VARA.AGENTS_AND_GROUPS" replacementmode="2" system="AE10">
+<HEADER state="1">
+<Title>Retrieves all Hosts and Hostgroups from The Database</Title>
+
+
+<LastUsed/>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType>SQLI_SEC</OH_SubType>
+</HEADER>
+<ATTR_VARA state="1">
+<Type>C|Text</Type>
+<lblSource/>
+<source>SQLI_SEC</source>
+<VRName>FREI|Freely selected</VRName>
+<NotFoundErr>0</NotFoundErr>
+<NotFoundDef>1</NotFoundDef>
+<ShareN>0</ShareN>
+<ShareL>0</ShareL>
+<ShareR>0</ShareR>
+<MaxValue_C>1024</MaxValue_C>
+<CheckMax_C>0</CheckMax_C>
+<uppercase>0</uppercase>
+<sortColumn>0</sortColumn>
+<sortDirection>0</sortDirection>
+</ATTR_VARA>
+<VARA state="1">
+<SQLI internal="YES">
+<command.sql>select '' OH_Name
+  union all
+select OH_Name from OH INNER JOIN HACL on OH.OH_Idnr = HACL.HACL_OH_Idnr WHERE HACL_Client = ? and OH_DeleteFlag = 0
+  union all
+select OH_NAME from OH WHERE OH_OType = 'HOSTG' and OH_CLIENT = ? and OH_DeleteFlag = 0 order by OH_Name</command.sql>
+<command.ora>select '' OH_Name from dual
+  union all
+select OH_Name from OH INNER JOIN HACL on OH.OH_Idnr = HACL.HACL_OH_Idnr WHERE HACL_Client = ? and OH_DeleteFlag = 0
+  union all
+select OH_NAME from OH WHERE OH_OType = 'HOSTG' and OH_CLIENT = ? and OH_DeleteFlag = 0 order by OH_Name</command.ora>
+<command.db2>select '' OH_Name from sysibm.sysdummy1
+  union all
+select OH_Name from OH INNER JOIN HACL on OH.OH_Idnr = HACL.HACL_OH_Idnr WHERE HACL_Client = ? and OH_DeleteFlag = 0
+  union all
+select OH_NAME from OH WHERE OH_OType = 'HOSTG' and OH_CLIENT = ? and OH_DeleteFlag = 0 order by OH_Name</command.db2>
+<resultformat/>
+<infobar>U4002751 Attention: There is a variable-replacement restriction in case of security limits (SQLVAR_SECURITY_LEVEL)!</infobar>
+<BindParams>
+<row Lnr="1" Value="&amp;$CLIENT#" id="5004984"/>
+<row Lnr="2" Value="&amp;$CLIENT#" id="5004984"/>
+</BindParams>
+</SQLI>
+</VARA>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</VARA>
+</uc-export>

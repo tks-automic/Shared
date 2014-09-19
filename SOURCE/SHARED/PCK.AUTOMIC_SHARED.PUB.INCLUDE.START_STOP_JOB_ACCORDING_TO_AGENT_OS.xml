@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><uc-export clientvers="8.0.0">
+<JOBI client="6000" name="PCK.AUTOMIC_SHARED.PUB.INCLUDE.START_STOP_JOB_ACCORDING_TO_AGENT_OS" system="AE10">
+<HEADER state="1">
+<Title/>
+
+
+<LastUsed/>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType/>
+</HEADER>
+<SCRIPT mode="1" state="1" tidy="0">
+<MSCRI><![CDATA[!get the agent OS type
+:SET &AGENT# = GET_SCRIPT_VAR("AGENT#")
+
+:IF &AGENT# <> ""
+:  PRINT "JOB: setting agent to &AGENT#"
+:ELSE
+:  SET &AGENT# = GET_ATT(HOST)
+:  PRINT "JOB: agent is preconfigured to &AGENT#"
+:ENDIF
+
+:PSET &UC4RB_AGENT_OS# = GET_VAR('UC_HOST_JCL_VAR', &AGENT#)
+:PRINT "WORKFLOW: &AGENT# agent runs on &UC4RB_AGENT_OS#"
+
+
+:SET &UC_WIN_TYP = GET_SCRIPT_VAR("UC_WIN_TYP")
+:PRINT "WIN_TYP: &UC_WIN_TYP"
+
+:SET &JOB_TYPE# = "INVALID - JOB Object Type"
+:IF &UC_WIN_TYP = "BAT" OR "KDO" OR "EXTCOMPROC"
+:  SET &JOB_TYPE# = "WINDOWS"
+:ELSE
+:  SET &UC_UNIX_TYPE = GET_ATT("UNIX_TYPE")
+:  PRINT "UNIX_TYPE: &UC_UNIX_TYPE"
+:  IF &UC_UNIX_TYPE = "SHELL_SCRIPT" OR "COMMAND"
+:    SET &JOB_TYPE# = "UNIX"
+:  ENDIF
+:ENDIF
+
+:IF &JOB_TYPE# = &UC4RB_AGENT_OS#
+:  PRINT "HEADER: check OS successfully - runbook (&JOB_TYPE#) runs on &UC4RB_AGENT_OS#"
+:  PUT_ATT HOST = &AGENT#
+:ELSE
+:  STOP NOMSG, 50, "HEADER: stop &JOB_TYPE# runbook because it's a &UC4RB_AGENT_OS# agent"
+:ENDIF]]></MSCRI>
+</SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</JOBI>
+</uc-export>
