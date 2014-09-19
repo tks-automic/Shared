@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><uc-export clientvers="8.0.0">
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="8.0.0">
 <VARA OVD_VRName="FREI" client="6000" data_type="STATIC" name="PCK.AUTOMIC_SHARED.PUB.VAR.METADATA" replacementmode="2" system="AE10">
 <HEADER state="1">
 <Title/>
@@ -36,7 +36,7 @@
 <row Name="Name" Value="PCK.AUTOMIC_SHARED" Value1=" " Value2=" " Value3=" " Value4=" "/>
 <row Name="Package Format Version" Value="0.1.0" Value1=" " Value2=" " Value3=" " Value4=" "/>
 <row Name="Title" Value="Automic Shared Library" Value1=" " Value2=" " Value3=" " Value4=" "/>
-<row Name="Version" Value="1.0.0" Value1=" " Value2=" " Value3=" " Value4=" "/>
+<row Name="Version" Value="0.7.0" Value1=" " Value2=" " Value3=" " Value4=" "/>
 </Variables>
 </VARA>
 <DOCU_Docu state="1" type="text">

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="8.0.0">
+<JOBI client="6000" name="PCK.AUTOMIC_SHARED.PUB.INCLUDE.CHECK_UNIX_SHELL_FILE_EXISTS" system="AE10">
+<HEADER state="1">
+<Title/>
+
+
+<LastUsed/>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType/>
+</HEADER>
+<SCRIPT mode="1" state="1" tidy="0">
+<MSCRI><![CDATA[! requires UC4 script variable &UC4RB_CHECKME#
+! different UNIX variable are set if the object is a directory, a file or does not exist
+CHECKME="&UC4RB_CHECKME#"
+ISDIR=0
+ISFILE=0
+EXIST=0
+if [ -d "$CHECKME" ] ;
+then
+  ISDIR=1
+  EXIST=1
+else
+  if [ -f "$CHECKME" ] ;
+  then
+    ISFILE=1
+    EXIST=1
+  fi
+fi
+:SET &UC4RB_LOGGING_INFO# = "&UC4RB_CHECKME# is checked for being a dir/file and if it exist"
+:INC PCK.AUTOMIC_SHARED.PUB.INCLUDE.LOGGING_INFO
+:SET &UC4RB_LOGGING_INFO# = "ISDIR:$ISDIR ISFILE:$ISFILE EXIST:$EXIST"
+echo &UC4RB_LOGGING_STRING# &UC4RB_LOGGING_INFO#
+:SET &UC4RB_LOGGING_INFO# = "------------------------------"
+:INC PCK.AUTOMIC_SHARED.PUB.INCLUDE.LOGGING_INFO]]></MSCRI>
+</SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</JOBI>
+</uc-export>

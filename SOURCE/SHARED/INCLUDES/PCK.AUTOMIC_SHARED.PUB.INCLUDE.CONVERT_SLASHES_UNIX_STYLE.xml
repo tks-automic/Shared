@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="8.0.0">
+<JOBI client="6000" name="PCK.AUTOMIC_SHARED.PUB.INCLUDE.CONVERT_SLASHES_UNIX_STYLE" system="AE10">
+<HEADER state="1">
+<Title/>
+
+
+<LastUsed/>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType/>
+</HEADER>
+<SCRIPT mode="1" state="1" tidy="0">
+<MSCRI><![CDATA[:SET &UC4RB_CONVERTED_STRING# = STR_SUBSTITUTE(&UC4RB_CONVERTED_STRING#, "\", "/")
+:SET &UC4RB_CONVERTED_STRING# = STR_TRIM(&UC4RB_CONVERTED_STRING#)
+
+:SET &LENGTH# = STR_LENGTH(&UC4RB_CONVERTED_STRING#);
+:IF &LENGTH# > 0
+:  SET &END_CHAR# = STR_CUT(&UC4RB_CONVERTED_STRING#, &LENGTH#, 1)
+:ELSE
+:  SET &END_CHAR# = ""
+:ENDIF
+
+:WHILE &END_CHAR# = "/" OR "\"
+:  SET &LENGTH# = &LENGTH# - 1
+:  IF &LENGTH# > 0
+:    SET &END_CHAR# = STR_CUT(&UC4RB_CONVERTED_STRING#, &LENGTH#, 1)
+:    IF &END_CHAR# <> ":"
+:      SET &UC4RB_CONVERTED_STRING# = STR_CUT(&UC4RB_CONVERTED_STRING#, 1, &LENGTH#)
+:      SET &END_CHAR# = STR_CUT(&UC4RB_CONVERTED_STRING#, &LENGTH#, 1)
+:    ENDIF
+:  ENDIF
+:ENDWHILE]]></MSCRI>
+</SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</JOBI>
+</uc-export>

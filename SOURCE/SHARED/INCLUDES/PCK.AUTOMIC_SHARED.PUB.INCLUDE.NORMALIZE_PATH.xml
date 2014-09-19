@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="8.0.0">
+<JOBI client="6000" name="PCK.AUTOMIC_SHARED.PUB.INCLUDE.NORMALIZE_PATH" system="AE10">
+<HEADER state="1">
+<Title/>
+
+
+<LastUsed/>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType/>
+</HEADER>
+<SCRIPT mode="1" state="1" tidy="0">
+<MSCRI><![CDATA[:IF &UC4RB_AGENT_OS# = "WINDOWS"
+:  SET &SEPARATOR_CHAR# = "\"
+:  SET &UC4RB_CONVERTED_STRING# = STR_SUBSTITUTE (&UC4RB_CONVERTED_STRING#, "/", "\")
+:ELSE
+:  SET &SEPARATOR_CHAR# = "/"
+:  SET &UC4RB_CONVERTED_STRING# = STR_SUBSTITUTE (&UC4RB_CONVERTED_STRING#, "\", "/")
+:ENDIF
+
+! Warning, this script doesn't work with Windows Universal Naming Convention
+:FILL &STRING_ARR#[] = STR_SPLIT(&UC4RB_CONVERTED_STRING#, &SEPARATOR_CHAR#)
+:SET &UC4RB_CONVERTED_STRING# = ""
+
+:SET &VAR# = 1
+:SET &LEN# = LENGTH(&STRING_ARR#[],SIZE)
+
+:WHILE &VAR# LE &LEN#
+:  IF "&STRING_ARR#[&VAR#]" <> ".." OR "." OR ""
+:    IF &UC4RB_AGENT_OS# = "WINDOWS"
+:      IF &UC4RB_CONVERTED_STRING# <> ""
+:        SET &UC4RB_CONVERTED_STRING# = STR_CAT(&UC4RB_CONVERTED_STRING#, "&SEPARATOR_CHAR#&STRING_ARR#[&VAR#]")
+:      ELSE
+:        SET &UC4RB_CONVERTED_STRING# = &STRING_ARR#[&VAR#]
+:      ENDIF
+:    ELSE
+:      SET &UC4RB_CONVERTED_STRING# = STR_CAT(&UC4RB_CONVERTED_STRING#, "&SEPARATOR_CHAR#&STRING_ARR#[&VAR#]")
+:    ENDIF
+:  ELSE
+:    IF "&STRING_ARR#[&VAR#]" EQ ".."
+:      SET &POS# = STR_FIND_REVERSE(&UC4RB_CONVERTED_STRING#, &SEPARATOR_CHAR#)
+:      SET &POS# = &POS# - 1
+:      SET &UC4RB_CONVERTED_STRING# = STR_CUT(&UC4RB_CONVERTED_STRING#, 1, &POS#)
+:    ENDIF
+:  ENDIF
+:  SET &VAR# = &VAR# + 1
+
+:ENDWHILE]]></MSCRI>
+</SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</JOBI>
+</uc-export>

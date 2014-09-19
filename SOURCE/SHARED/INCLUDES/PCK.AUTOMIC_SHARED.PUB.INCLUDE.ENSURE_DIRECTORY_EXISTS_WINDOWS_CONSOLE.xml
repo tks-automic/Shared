@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="8.0.0">
+<JOBI client="6000" name="PCK.AUTOMIC_SHARED.PUB.INCLUDE.ENSURE_DIRECTORY_EXISTS_WINDOWS_CONSOLE" system="AE10">
+<HEADER state="1">
+<Title/>
+
+
+<LastUsed/>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType/>
+</HEADER>
+<SCRIPT mode="1" state="1" tidy="0">
+<MSCRI><![CDATA[cd /d "&UC4RB_CONVERTED_STRING#" > nul
+@if NOT %ERRORLEVEL% == 0 (
+   mkdir "&UC4RB_CONVERTED_STRING#"
+)
+:INC PCK.AUTOMIC_SHARED.PUB.INCLUDE.CHECK_RETURN_CODE_WINDOWS_CONSOLE]]></MSCRI>
+</SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</JOBI>
+</uc-export>

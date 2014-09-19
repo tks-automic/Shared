@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="8.0.0">
+<VARA OVD_VRName="FREI" client="6000" data_type="MULTI" name="PCK.AUTOMIC_SHARED.PRV.VARA.AGENTS_AND_GROUPS" replacementmode="2" system="AE10">
+<HEADER state="1">
+<Title>Agent List</Title>
+
+
+<LastUsed/>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType>MULTI</OH_SubType>
+</HEADER>
+<ATTR_VARA state="1">
+<Type>C|Text</Type>
+<lblSource>Multi</lblSource>
+<source>MULTI</source>
+<VRName>FREI|Freely selected</VRName>
+<NotFoundErr>0</NotFoundErr>
+<NotFoundDef>1</NotFoundDef>
+<ShareN>0</ShareN>
+<ShareL>0</ShareL>
+<ShareR>0</ShareR>
+<MaxValue_C>1024</MaxValue_C>
+<CheckMax_C>0</CheckMax_C>
+<uppercase>0</uppercase>
+<sortColumn>0</sortColumn>
+<sortDirection>0</sortDirection>
+</ATTR_VARA>
+<VARA state="1">
+<MULTI>
+<Vara1>XC_VARA.AGENTS</Vara1>
+<Vara2>PCK.AUTOMIC_SHARED.PRV.VARA.OWN_STATIC</Vara2>
+<resultformat/>
+<union>0</union>
+<intersection>0</intersection>
+<minus>1</minus>
+</MULTI>
+</VARA>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</VARA>
+</uc-export>

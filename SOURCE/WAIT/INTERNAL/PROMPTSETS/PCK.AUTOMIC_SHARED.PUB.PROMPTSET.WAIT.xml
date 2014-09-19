@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="8.0.0">
+<PRPT client="6000" name="PCK.AUTOMIC_SHARED.PUB.PROMPTSET.WAIT" system="AE10">
+<HEADER state="1">
+<Title/>
+
+
+<LastUsed/>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType/>
+</HEADER>
+<PROMPTDESIGNER state="1">
+<DESIGNER/>
+</PROMPTDESIGNER>
+<PROMPTSETXUI state="1">
+<XUIEDITOR><![CDATA[<dialog height="968" icon="PRPT" id="PRPTS" left="0" top="0" width="1326"><readpanel fill="b" id="PRPTBOX" nl="1" scroll="v" text="Overwrite Settings"><properties><entry name="text">Overwrite Settings</entry><entry name="modifiable">0</entry></properties><integer alt="1" enabled="1" fill="b" focus="0" id="UC4RB_WAIT_TIMEs.00" max="" min="" nl="1" text="Wait time in n seconds" tooltip="Time in second the script should wait">
+      <properties>
+        <entry listparam="N" name="reference">UC_DATATYPE_NUMERIC</entry>
+        <entry name="text">Wait time in n seconds</entry>
+        <entry name="min"/>
+        <entry name="max"/>
+        <entry name="quotes"/>
+        <entry name="id">UC4RB_WAIT_TIMEs.00</entry>
+        <entry name="enabled">0</entry>
+        <entry name="focus">0</entry>
+        <entry name="tooltip">Time in second the script should wait</entry>
+        <entry name="modifiable">1</entry>
+        <entry name="customfield"/>
+      <entry name="initvalue">0</entry></properties>
+    </integer></readpanel></dialog>]]></XUIEDITOR>
+</PROMPTSETXUI>
+<PROMPTSETDATA state="1">
+<DATAEDITOR><![CDATA[<PRPTS idnr="0005484815" client="6000" system="AE10" ontop="1" src="oh"><PRPTBOX><UC4RB_WAIT_TIMEs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_WAIT_TIME#" ReadFromTable="OPSE">0</UC4RB_WAIT_TIMEs.00></PRPTBOX></PRPTS>]]></DATAEDITOR>
+</PROMPTSETDATA>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</PRPT>
+</uc-export>

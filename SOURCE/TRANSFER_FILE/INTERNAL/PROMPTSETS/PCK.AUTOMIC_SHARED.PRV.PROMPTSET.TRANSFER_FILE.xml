@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="8.0.0">
+<PRPT client="6000" name="PCK.AUTOMIC_SHARED.PRV.PROMPTSET.TRANSFER_FILE" system="AE10">
+<HEADER state="1">
+<Title>Transfer files using agent-to-agent file transfer job</Title>
+
+
+<LastUsed/>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType/>
+</HEADER>
+<PROMPTDESIGNER state="1">
+<DESIGNER/>
+</PROMPTDESIGNER>
+<PROMPTSETXUI state="1">
+<XUIEDITOR><![CDATA[<dialog height="424" icon="PRPT" id="PRPTS" left="0" top="0" width="441"><readpanel fill="b" id="PRPTBOX" nl="1" scroll="v" text="PCK.AUTOMIC_SHARED.PRV.PROMPTSET.TRANSFER_FILE"><properties><entry name="text">PCK.AUTOMIC_SHARED.PRV.PROMPTSET.TRANSFER_FILE</entry><entry name="modifiable">0</entry></properties><combo alt="1" dynamic="0" enabled="1" fill="b" filter="0" focus="0" id="UC4RB_SOURCE_AGENTs.00" nl="1" strict="1" text="Source Agent" tooltip="" vtype="i"><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command owner="_self" owneraction="setsource" ownerparam="src|_dialog@src"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptcombolist" target="_self" targetaction="setlist" wait="1"/>
+         
+         
+         
+      <properties>
+        <entry listparam="" name="reference">PCK.AUTOMIC_SHARED.PRV.VARA.AGENTS_AND_GROUPS</entry>
+        <entry name="text">Source Agent</entry>
+        <entry name="quotes"/>
+        <entry name="id">UC4RB_SOURCE_AGENTs.00</entry>
+        <entry name="dynamic">0</entry>
+        <entry name="enabled">0</entry>
+        <entry name="focus">0</entry>
+        <entry name="tooltip"/>
+        <entry name="modifiable">1</entry>
+        <entry name="customfield"/>
+      <entry name="initvalue"/>
+         </properties>
+    </combo><combo alt="1" dynamic="0" enabled="1" fill="b" filter="0" focus="0" id="UC4RB_SOURCE_LOGINs.00" nl="1" strict="1" text="Source Login Object" tooltip="" vtype="i"><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command owner="_self" owneraction="setsource" ownerparam="src|_dialog@src"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptcombolist" target="_self" targetaction="setlist" wait="1"/>
+         
+         
+         
+      <properties>
+        <entry listparam="" name="reference">PCK.AUTOMIC_SHARED.PRV.VARA.LOGINS</entry>
+        <entry name="text">Source Login Object</entry>
+        <entry name="quotes"/>
+        <entry name="id">UC4RB_SOURCE_LOGINs.00</entry>
+        <entry name="dynamic">0</entry>
+        <entry name="enabled">0</entry>
+        <entry name="focus">0</entry>
+        <entry name="tooltip"/>
+        <entry name="modifiable">1</entry>
+        <entry name="customfield"/>
+      <entry name="initvalue"/>
+         </properties>
+    </combo><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_SOURCE_FILEs.00" inputassistance="0" len="" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Source File" tooltip="" upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+         
+      <properties>
+        <entry listparam="C,N" name="reference">UC_DATATYPE_STRING</entry>
+        <entry name="text">Source File</entry>
+        <entry name="multiselect">0</entry>
+        <entry name="separator">;</entry>
+        <entry name="len"/>
+        <entry name="quotes"/>
+        <entry name="id">UC4RB_SOURCE_FILEs.00</entry>
+        <entry name="regex"/>
+        <entry name="inputassistance">0</entry>
+        <entry name="enabled">0</entry>
+        <entry name="required">0</entry>
+        <entry name="upper">0</entry>
+        <entry name="focus">0</entry>
+        <entry name="showaspassword">0</entry>
+        <entry name="tooltip"/>
+        <entry name="modifiable">1</entry>
+        <entry name="customfield"/>
+      <entry name="initvalue"/>
+         </properties>
+    </text><combo alt="1" dynamic="0" enabled="1" fill="b" filter="0" focus="0" id="UC4RB_TARGET_AGENTs.00" nl="1" strict="1" text="Target Agent" tooltip="" vtype="i"><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command owner="_self" owneraction="setsource" ownerparam="src|_dialog@src"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptcombolist" target="_self" targetaction="setlist" wait="1"/>
+         
+         
+         
+      <properties>
+        <entry listparam="" name="reference">PCK.AUTOMIC_SHARED.PRV.VARA.AGENTS_AND_GROUPS</entry>
+        <entry name="text">Target Agent</entry>
+        <entry name="quotes"/>
+        <entry name="id">UC4RB_TARGET_AGENTs.00</entry>
+        <entry name="dynamic">0</entry>
+        <entry name="enabled">0</entry>
+        <entry name="focus">0</entry>
+        <entry name="tooltip"/>
+        <entry name="modifiable">1</entry>
+        <entry name="customfield"/>
+      <entry name="initvalue"/>
+         </properties>
+    </combo><combo alt="1" dynamic="0" enabled="1" fill="b" filter="0" focus="0" id="UC4RB_TARGET_LOGINs.00" nl="1" strict="1" text="Target Login Object" tooltip="" vtype="i"><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command owner="_self" owneraction="setsource" ownerparam="src|_dialog@src"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptcombolist" target="_self" targetaction="setlist" wait="1"/>
+         
+         
+         
+      <properties>
+        <entry listparam="" name="reference">PCK.AUTOMIC_SHARED.PRV.VARA.LOGINS</entry>
+        <entry name="text">Target Login Object</entry>
+        <entry name="quotes"/>
+        <entry name="id">UC4RB_TARGET_LOGINs.00</entry>
+        <entry name="dynamic">0</entry>
+        <entry name="enabled">0</entry>
+        <entry name="focus">0</entry>
+        <entry name="tooltip"/>
+        <entry name="modifiable">1</entry>
+        <entry name="customfield"/>
+      <entry name="initvalue"/>
+         </properties>
+    </combo><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_TARGET_FILEs.00" inputassistance="0" len="" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Target File" tooltip="" upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+         
+      <properties>
+        <entry listparam="C,N" name="reference">UC_DATATYPE_STRING</entry>
+        <entry name="text">Target File</entry>
+        <entry name="multiselect">0</entry>
+        <entry name="separator">;</entry>
+        <entry name="len"/>
+        <entry name="quotes"/>
+        <entry name="id">UC4RB_TARGET_FILEs.00</entry>
+        <entry name="regex"/>
+        <entry name="inputassistance">0</entry>
+        <entry name="enabled">0</entry>
+        <entry name="required">0</entry>
+        <entry name="upper">0</entry>
+        <entry name="focus">0</entry>
+        <entry name="showaspassword">0</entry>
+        <entry name="tooltip"/>
+        <entry name="modifiable">1</entry>
+        <entry name="customfield"/>
+      <entry name="initvalue"/>
+         </properties>
+    </text><dynradiogroup alt="1" enabled="1" fill="b" focus="" id="UC4RB_OVERWRITE_TARGETs.00" nl="1" text="Overwrite Target" tooltip="" required="0">
+      <properties>
+        <entry listparam="C,N" name="reference">PCK.AUTOMIC_SHARED.PRV.VARA.YES_NO</entry>
+        <entry name="text">Overwrite Target</entry>
+        <entry name="quotes"/>
+        <entry name="id">UC4RB_OVERWRITE_TARGETs.00</entry>
+        <entry name="enabled">0</entry>
+        <entry name="focus">0</entry>
+        <entry name="tooltip"/>
+        <entry name="modifiable">1</entry>
+        <entry name="customfield"/>
+      <entry name="initvalue"/>
+         </properties>
+    </dynradiogroup><dynradiogroup alt="1" enabled="1" fill="b" focus="" id="UC4RB_REMOVE_SOURCEs.00" nl="1" text="Remove Source" tooltip="" required="0">
+      <properties>
+        <entry listparam="C,N" name="reference">PCK.AUTOMIC_SHARED.PRV.VARA.YES_NO</entry>
+        <entry name="text">Remove Source</entry>
+        <entry name="quotes"/>
+        <entry name="id">UC4RB_REMOVE_SOURCEs.00</entry>
+        <entry name="enabled">0</entry>
+        <entry name="focus">0</entry>
+        <entry name="tooltip"/>
+        <entry name="modifiable">1</entry>
+        <entry name="customfield"/>
+      <entry name="initvalue"/>
+         </properties>
+    </dynradiogroup></readpanel></dialog>]]></XUIEDITOR>
+</PROMPTSETXUI>
+<PROMPTSETDATA state="1">
+<DATAEDITOR><![CDATA[<PRPTS idnr="0005712065" client="6000" system="AE10" ontop="1" src="oh"><PRPTBOX><UC4RB_SOURCE_AGENTs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_SOURCE_AGENT#" ReadFromTable="OPSE"></UC4RB_SOURCE_AGENTs.00><UC4RB_SOURCE_LOGINs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_SOURCE_LOGIN#" ReadFromTable="OPSE">UC4_RL.LOGIN.ALL</UC4RB_SOURCE_LOGINs.00><UC4RB_SOURCE_FILEs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_SOURCE_FILE#" ReadFromTable="OPSE"></UC4RB_SOURCE_FILEs.00><UC4RB_TARGET_AGENTs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_TARGET_AGENT#" ReadFromTable="OPSE"></UC4RB_TARGET_AGENTs.00><UC4RB_TARGET_LOGINs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_TARGET_LOGIN#" ReadFromTable="OPSE">UC4_RL.LOGIN.ALL</UC4RB_TARGET_LOGINs.00><UC4RB_TARGET_FILEs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_TARGET_FILE#" ReadFromTable="OPSE"></UC4RB_TARGET_FILEs.00><UC4RB_OVERWRITE_TARGETs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_OVERWRITE_TARGET#" ReadFromTable="OPSE">YES</UC4RB_OVERWRITE_TARGETs.00><UC4RB_REMOVE_SOURCEs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_REMOVE_SOURCE#" ReadFromTable="OPSE">NO</UC4RB_REMOVE_SOURCEs.00></PRPTBOX></PRPTS>]]></DATAEDITOR>
+</PROMPTSETDATA>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</PRPT>
+</uc-export>

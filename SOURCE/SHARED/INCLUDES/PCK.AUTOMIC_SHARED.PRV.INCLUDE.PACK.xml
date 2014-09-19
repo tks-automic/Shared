@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="8.0.0">
+<JOBI client="6000" name="PCK.AUTOMIC_SHARED.PRV.INCLUDE.PACK" system="AE10">
+<HEADER state="1">
+<Title>Pack</Title>
+
+
+<LastUsed/>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType/>
+</HEADER>
+<SCRIPT mode="1" state="1" tidy="0">
+<MSCRI><![CDATA[:JCL_CONCAT_CHAR "?"
+java -jar sharedtool.jar File Archive ?
+-s "&UC4RB_DIR_TO_PACK#" ?
+-t "&UC4RB_FILE_PACK_TARGET#"
+:JCL_CONCAT_CHAR]]></MSCRI>
+</SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</JOBI>
+</uc-export>

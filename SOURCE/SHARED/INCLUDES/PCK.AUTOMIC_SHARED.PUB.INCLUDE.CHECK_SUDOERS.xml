@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="8.0.0">
+<JOBI client="6000" name="PCK.AUTOMIC_SHARED.PUB.INCLUDE.CHECK_SUDOERS" system="AE10">
+<HEADER state="1">
+<Title/>
+
+
+<LastUsed/>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType/>
+</HEADER>
+<SCRIPT mode="1" state="1" tidy="0">
+<MSCRI><![CDATA[:SET &USE_SUDO# = "No"
+:SET &PARAM_USE_SUDO# = GET_PUBLISHED_VALUE(&$RUNID#, UC4RB_USE_SUDO#)
+:SET &PARAM_SUDO_PASSWORD# = GET_PUBLISHED_VALUE(&$RUNID#, UC4RB_SUDO_PASSWORD#)
+:SET &PARAM_SUDO_USER# = GET_PUBLISHED_VALUE(&$RUNID#, UC4RB_SUDO_USER#)
+:SET &login_user# = get_att(USERID)
+:IF &PARAM_USE_SUDO# = "Sudo"
+:  IF &login_user# <> "root"
+:    IF &PARAM_SUDO_PASSWORD# NE ""
+!      use SUDO with password
+:      SET &USE_SUDO# = "Yes"
+:      SET &UC4RB_ENCRYPTED_PASSWORD_TMP#="&PARAM_SUDO_PASSWORD#"
+:      INCLUDE PCK.AUTOMIC_SHARED.PUB.INCLUDE.DECRYPT_PASSWORD
+      echo 'Validating sudoer ...'
+sudo -k
+sudo -S -p '' -v << EOF
+$UC4_DECRYPTED_PWD
+EOF
+      RC=$?
+      if [ "$RC" -ne "0" ] ; then
+        exit $RC
+      fi
+:    ELSE
+! try with sudo nopass
+:SET &USE_SUDO# = "Yes"
+sudo -k
+sudo -p '' -v
+      RC=$?
+      if [ "$RC" -ne "0" ] ; then
+        exit $RC
+      fi
+!    use SUDO but didn't input SUDO_PASSWORD
+    echo WARNING: SUDO password is blank, make sure that the current user has SUDO privileges WITHOUT password.
+:    ENDIF
+:  ENDIF
+:ENDIF
+]]></MSCRI>
+</SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</JOBI>
+</uc-export>

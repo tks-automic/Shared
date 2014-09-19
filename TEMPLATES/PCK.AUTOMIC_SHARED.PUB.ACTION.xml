@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><uc-export clientvers="8.0.0">
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="8.0.0">
 <JOBP AllowExternal="1" name="PCK.AUTOMIC_SHARED.PUB.ACTION">
 <XHEADER state="1">
 <Title/>
@@ -57,17 +57,9 @@
 <node content="1" id="VALUE" name="Variables" parent="" type="TASKVALUE">
 <VALUE state="2">
 <Values/>
-<Mode>0</Mode>
+<Mode>OH_OV_Mode</Mode>
 </VALUE>
 </node>
-<node content="1" id="PVALUE" name="Parent Variables" parent="" type="TASKVALUE">
-<VALUE state="2">
-<Values/>
-<Mode>0</Mode>
-</VALUE>
-</node>
-<node content="1" id="PRPTS" name="PromptSets" parent="" pref="1" type="PROMPTSET"/>
-<node content="0" id="PPRPTS" name="Parent PromptSets" parent="" type="PPROMPTSET"/>
 </dyntree>
 </dynvalues>
 <CIT CCTypeOne="1" CaleOn="0"/>
@@ -95,17 +87,9 @@
 <node content="1" id="VALUE" name="Variables" parent="" type="TASKVALUE">
 <VALUE state="2">
 <Values/>
-<Mode>0</Mode>
+<Mode>OH_OV_Mode</Mode>
 </VALUE>
 </node>
-<node content="1" id="PVALUE" name="Parent Variables" parent="" type="TASKVALUE">
-<VALUE state="2">
-<Values/>
-<Mode>0</Mode>
-</VALUE>
-</node>
-<node content="1" id="PRPTS" name="PromptSets" parent="" pref="1" type="PROMPTSET"/>
-<node content="0" id="PPRPTS" name="Parent PromptSets" parent="" type="PPROMPTSET"/>
 </dyntree>
 </dynvalues>
 <CIT CCTypeOne="1" CaleOn="0"/>

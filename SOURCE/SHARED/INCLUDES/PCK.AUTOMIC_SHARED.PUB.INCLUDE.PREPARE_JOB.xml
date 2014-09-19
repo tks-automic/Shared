@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="8.0.0">
+<JOBI client="6000" name="PCK.AUTOMIC_SHARED.PUB.INCLUDE.PREPARE_JOB" system="AE10">
+<HEADER state="1">
+<Title/>
+
+
+<LastUsed/>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType/>
+</HEADER>
+<SCRIPT mode="1" state="1" tidy="0">
+<MSCRI><![CDATA[! 1 - set the AGENT variable (value or from outside)
+! 2 - does the AGENT exist
+! 3 - does the objectname end with @TARGET_SYSTEM
+! 4 - compare objectname TARGET_SYSTEM with agent variable UC_HOST_JCL_VAR (exception CIT => RA)
+! 5 - get AGENT bin directory
+! 6 - set LOGIN OBJECT variable (value or from outside)
+!------------------------------
+
+! 1 a - ensure the AGENT variable is set
+:SET &AGENT_VALUE# = "AGENT#"
+:SET &AGENT# = GET_SCRIPT_VAR(&AGENT_VALUE#)
+:IF &AGENT# = ""
+:  PRINT "HEADER: no agent received"
+:  SET &UC4RB_SET_EXTERNAL# = 0
+:ELSE
+:  PRINT "HEADER: set agent from outside (like RM): &AGENT#"
+:  SET &UC4RB_SET_EXTERNAL# = 1
+:ENDIF
+
+! 1 b - check whether the AGENT is overwritten (filetransfer for example)
+:SET &OVERWRITE_AGENT_VALUE# = "OVERWRITE_AGENT#"
+:SET &OVERWRITE_AGENT# = GET_SCRIPT_VAR(&OVERWRITE_AGENT_VALUE#)
+:SET &UC4RB_OVERWRITE_AGENT_OS# = GET_VAR('UC_HOST_JCL_VAR', &OVERWRITE_AGENT#)
+:IF &OVERWRITE_AGENT# <> ""
+:  PRINT "HEADER: overwrite agent with: &OVERWRITE_AGENT# (&UC4RB_OVERWRITE_AGENT_OS#)"
+:  SET &UC4RB_SET_EXTERNAL# = 1
+:  SET &UC4RB_AGENT_OS# = &UC4RB_OVERWRITE_AGENT_OS#
+:  SET &AGENT# = &OVERWRITE_AGENT#
+:ENDIF
+
+! 2 - check whether the AGENT exists
+:IF &UC4RB_SET_EXTERNAL# = 1
+:  SET &UC4RB_AGENT_OHIDNR# = GET_OH_IDNR(&AGENT#,0000)
+:  IF &UC4RB_AGENT_OHIDNR# = 0
+!:    STOP MSG, 50, "HEADER: host &AGENT# doesnt exist"
+:    PRINT "HEADER: host &AGENT# doesnt exist"
+:  ENDIF
+:ENDIF
+
+! 3 - check the uc4 object name for "@TARGET_SYSTEM"
+:IF &UC4RB_SET_EXTERNAL# = 1
+:  SET &UC4RB_RBNAME# = SYS_ACT_ME_NAME()
+:  SET &UC4RB_TEMP# = STR_FIND(&UC4RB_RBNAME#,"@")
+:  IF &UC4RB_TEMP# = 0
+:    STOP MSG, 50, "HEADER: runbook without @TARGET_SYSTEM in the name is not allowed"
+:  ENDIF
+:  SET &UC4RB_TEMP# = ADD(&UC4RB_TEMP#,1)
+:  SET &UC4RB_TARGET_OS# = MID(&UC4RB_RBNAME#,&UC4RB_TEMP#)
+:  IF &UC4RB_TARGET_OS# = "CIT"
+:    SET &UC4RB_TARGET_OS# = "RA"
+:  ENDIF
+:  IF &UC4RB_TARGET_OS# <> "RA" OR "WINDOWS" OR "UNIX"
+:    STOP MSG, 50, "HEADER: wrong object name ending. @TARGET_SYSTEM must be RA, WINDOWS or UNIX"
+:  ENDIF
+:  PRINT "HEADER: runbook function for &UC4RB_TARGET_OS#"
+:ENDIF
+
+! 4 - check whether UC4RB_AGENT_OS is set and compare to the runbook TARGET_OS value
+:IF &UC4RB_SET_EXTERNAL# = 1
+:  SET &UC4RB_AGENT_OS_VALUE# = "UC4RB_AGENT_OS#"
+:  SET &UC4RB_AGENT_OS# = GET_SCRIPT_VAR(&UC4RB_AGENT_OS_VALUE#)
+:  IF &UC4RB_AGENT_OS# = ""
+:    PRINT "HEADER: runbook runs stand alone - no OS check"
+:  ELSE
+:    IF &UC4RB_TARGET_OS# = &UC4RB_AGENT_OS#
+:      PRINT "HEADER: check OS successfully - runbook (&UC4RB_TARGET_OS#) runs on &UC4RB_AGENT_OS#"
+:    ELSE
+:      STOP NOMSG, 50, "HEADER: stop &UC4RB_TARGET_OS# runbook because it's a &UC4RB_AGENT_OS# agent"
+:    ENDIF
+:  ENDIF
+:ENDIF
+
+:IF &AGENT# <> ""
+:  PUT_ATT HOST = &AGENT#
+:ELSE
+:  SET &AGENT# = GET_ATT(HOST)
+:ENDIF
+
+! 5 - get AGENT bin directory
+:SET &UC4RB_AGENT_WORKING_DIR# = GET_VAR('UC_EX_PATH_BIN', &AGENT#)
+:PRINT "HEADER: agent bin directory &UC4RB_AGENT_WORKING_DIR#"
+
+! 6a - check if Login os overwritten
+:SET &OVERWRITE_LOGIN_VALUE# = "OVERWRITE_LOGIN#"
+:SET &OVERWRITE_LOGIN# = GET_SCRIPT_VAR(&OVERWRITE_LOGIN_VALUE#)
+:IF &OVERWRITE_LOGIN# <> ""
+:  PRINT "HEADER: overwrite login with: &OVERWRITE_LOGIN#"
+:  SET &LOGIN# = &OVERWRITE_LOGIN#
+:ENDIF
+
+! 6b - set Login Object
+:SET &LOGIN_VALUE# = "LOGIN#"
+:SET &LOGIN# = GET_SCRIPT_VAR(&LOGIN_VALUE#)
+:IF &LOGIN# = ""
+:  PRINT "HEADER: no login object received"
+:ELSE
+:  PRINT "HEADER: set login object from outside (like RM): &LOGIN#"
+:ENDIF
+
+:IF &LOGIN# <> ""
+:  PUT_ATT LOGIN = &LOGIN#
+:ELSE
+:  SET &LOGIN# = GET_ATT(LOGIN)
+:ENDIF]]></MSCRI>
+</SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</JOBI>
+</uc-export>

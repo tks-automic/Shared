@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="8.0.0">
+<JOBI client="6000" name="PCK.AUTOMIC_SHARED.PUB.INCLUDE.LOGGING_HEADER_EXECUTION" system="AE10">
+<HEADER state="1">
+<Title/>
+
+
+<LastUsed/>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType/>
+</HEADER>
+<SCRIPT mode="1" state="1" tidy="0">
+<MSCRI><![CDATA[:SET &UC4RB_ECHO_CMD = "echo"
+:SET &UC_WIN_TYP = GET_SCRIPT_VAR("UC_WIN_TYP")
+:IF &UC4RB_AGENT_OS# = "WINDOWS"
+:  IF &UC_WIN_TYP = "EXTCOMPROC"
+:    SET &UC4RB_ECHO_CMD = "Write-Host"
+:  ENDIF
+:ENDIF
+&UC4RB_ECHO_CMD ""
+&UC4RB_ECHO_CMD ""
+&UC4RB_ECHO_CMD "********************************"
+&UC4RB_ECHO_CMD "**      EXECUTION START       **"
+&UC4RB_ECHO_CMD "********************************"
+&UC4RB_ECHO_CMD ""]]></MSCRI>
+</SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</JOBI>
+</uc-export>

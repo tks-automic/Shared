@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="8.0.0">
+<JOBI client="6000" name="PCK.AUTOMIC_SHARED.PUB.INCLUDE.SUDOERS_HEADER" system="AE10">
+<HEADER state="1">
+<Title/>
+
+
+<LastUsed/>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType/>
+</HEADER>
+<SCRIPT mode="1" state="1" tidy="0">
+<MSCRI><![CDATA[:INC PCK.AUTOMIC_SHARED.PUB.INCLUDE.CHECK_SUDOERS
+:IF &USE_SUDO# = "Yes"
+:  SET &UC4RB_AGENT_WORKING_DIR# = GET_VAR('UC_EX_PATH_BIN', &AGENT#)
+:  SET &UC4RB_AGENT_TEMP_DIR# = "&UC4RB_AGENT_WORKING_DIR#/../temp/"
+!  Normalize file path
+:  INC PCK.AUTOMIC_SHARED.PUB.INCLUDE.NORMALIZE_PATH "UC4RB_CONVERTED_STRING" = "UC4RB_AGENT_TEMP_DIR"
+:  SET &UC4RB_AGENT_TEMP_SUDO_FILE# = "&UC4RB_AGENT_TEMP_DIR#/sudo&$ACTIVATOR_RUNID#.sh"
+echo "Creating temp file to sudo at &UC4RB_AGENT_TEMP_SUDO_FILE# ..."
+cat - 1>&UC4RB_AGENT_TEMP_SUDO_FILE# <<'EOF'
+:ENDIF]]></MSCRI>
+</SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</JOBI>
+</uc-export>
